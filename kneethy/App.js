@@ -17,7 +17,7 @@ export default function App() {
         <div>
         </div>
       </View>
-      <Text style={styles.mainText}>Open up App.js to start working on your app!</Text>
+      <Text style={styles.mainText}>Open up App.js to start working on your apps!</Text>
       <StatusBar style="auto" />
     </View>
   );
