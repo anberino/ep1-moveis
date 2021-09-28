@@ -19,8 +19,35 @@ function HomeScreen({ navigation }) {
 function TemperatureScreen({ navigation }) {
   return (
     <View style={page.container}>
-      {customIcon("sunny-outline")}
+      {customIcon("thermometer-outline")}
       <Text style={page.text}>Temperature Screen</Text>
+    </View>
+  );
+}
+
+function HumidityScreen({ navigation }) {
+  return (
+    <View style={page.container}>
+      {customIcon("beer-outline")}
+      <Text style={page.text}>Humildade Screen</Text>
+    </View>
+  );
+}
+
+function CloudScreen({ navigation }) {
+  return (
+    <View style={page.container}>
+      {customIcon("thunderstorm-outline")}
+      <Text style={page.text}>Cloud Screen</Text>
+    </View>
+  );
+}
+
+function JournalScreen({ navigation }) {
+  return (
+    <View style={page.container}>
+      {customIcon("book-outline")}
+      <Text style={page.text}>Diario Screen</Text>
     </View>
   );
 }
@@ -58,6 +85,9 @@ function App() {
       >
         <Drawer.Screen name="Home" component={HomeScreen} options={{headerTitle: "K N E E T H Y"}}/>
         <Drawer.Screen name="Temperature" component={TemperatureScreen} />
+        <Drawer.Screen name="Humidity" component={HumidityScreen} />
+        <Drawer.Screen name="Cloud" component={CloudScreen} />
+        <Drawer.Screen name="Journal" component={JournalScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
