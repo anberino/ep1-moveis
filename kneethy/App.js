@@ -1,63 +1,107 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import Icon from 'react-native-vector-icons/Feather';
+import 'react-native-gesture-handler';
+import * as React from 'react';
+import { View, Text, Button, StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createDrawerNavigator, DrawerItem } from '@react-navigation/drawer';
+import Icon from 'react-native-vector-icons/Ionicons';
+import { DrawerLayout } from 'react-native-gesture-handler';
 
-export default function App() {
+function HomeScreen({ navigation }) {
   return (
-    <View style={styles.background}>
-      <View style={styles.topMenu}>
-        <div>
-          {newIcon('menu', '#fdffff')}
-        </div>
-        <div>
-          <Text style={styles.title}>K N E E T H Y</Text>
-        </div>
-          {newIcon('user', '#fdffff')}
-        <div>
-        </div>
-      </View>
-      <Text style={styles.mainText}>Open up App.js to start working on your apps!</Text>
-      <StatusBar style="auto" />
+    <View style={page.container}>
+      {customIcon("home-outline")}
+      <Text style={page.text}>Home Screen</Text>
     </View>
   );
 }
 
-function newIcon(name, color) {
-  return <Icon name={name} size={30} color={color} />;
+function TemperatureScreen({ navigation }) {
+  return (
+    <View style={page.container}>
+      {customIcon("thermometer-outline")}
+      <Text style={page.text}>Temperature Screen</Text>
+    </View>
+  );
 }
 
-const styles = StyleSheet.create({
-  background: {
+function HumidityScreen({ navigation }) {
+  return (
+    <View style={page.container}>
+      {customIcon("beer-outline")}
+      <Text style={page.text}>Humildade Screen</Text>
+    </View>
+  );
+}
+
+function CloudScreen({ navigation }) {
+  return (
+    <View style={page.container}>
+      {customIcon("thunderstorm-outline")}
+      <Text style={page.text}>Cloud Screen</Text>
+    </View>
+  );
+}
+
+function JournalScreen({ navigation }) {
+  return (
+    <View style={page.container}>
+      {customIcon("book-outline")}
+      <Text style={page.text}>Diario Screen</Text>
+    </View>
+  );
+}
+
+function customIcon(name) {
+  return(<Icon name={name} size={128} color="#fff" />)
+}
+
+const Perfil = () => {
+  return(<Icon name="person-outline" size={24} color="#fff" style={{ marginLeft: 5, marginRight: 15 }} />)
+}
+
+const Drawer = createDrawerNavigator();
+
+function App() {
+  return (
+    <NavigationContainer>
+      <Drawer.Navigator initialRouteName="Home"
+            screenOptions={{
+              headerStyle: {
+                backgroundColor: '#222531',
+                borderBottomColor: '#222531',
+              },
+              headerTitleAlign: 'center',
+              headerTintColor: '#fff',
+              headerRight: () => <Perfil/>,
+              drawerStyle: {
+                backgroundColor:'#222531',
+              },
+              drawerActiveTintColor: '#fff',
+              drawerActiveBackgroundColor: '#5B5F72',
+              drawerInactiveTintColor: '#5B5F72',
+              drawerInactiveBackgroundColor: '#222531',
+            }}
+      >
+        <Drawer.Screen name="Home" component={HomeScreen} options={{headerTitle: "K N E E T H Y"}}/>
+        <Drawer.Screen name="Temperature" component={TemperatureScreen} />
+        <Drawer.Screen name="Humidity" component={HumidityScreen} />
+        <Drawer.Screen name="Cloud" component={CloudScreen} />
+        <Drawer.Screen name="Journal" component={JournalScreen} />
+      </Drawer.Navigator>
+    </NavigationContainer>
+  );
+}
+
+const page = StyleSheet.create({
+  container: {
     flex: 1,
-    backgroundColor: '#222531',
     alignItems: 'center',
-    justifyContent: 'center',
-    width: "100%"
+    backgroundColor: '#222531'
   },
-  mainText: {
-    color: '#fdffff',
-    fontFamily: 'arial',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  secText: {
-    color: '#5B5E72',
-    fontFamily: 'arial',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  topMenu: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-    flexDirection: 'row',
-    width: '100%',
-  },
-  title: {
-    color: '#fdffff',
-    fontFamily: 'arial',
-    alignItems: 'center',
-    justifyContent: 'center',
+  text: {
+    color: '#fff'
   },
 });
+
+export default App;
