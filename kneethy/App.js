@@ -6,12 +6,14 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator, DrawerItem } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { DrawerLayout } from 'react-native-gesture-handler';
+import { WeatherBlock } from './Weather';
 
 function HomeScreen({ navigation }) {
   return (
     <View style={page.container}>
       {customIcon("home-outline")}
       <Text style={page.text}>Home Screen</Text>
+      <WeatherBlock city="Santos"></WeatherBlock>
     </View>
   );
 }
