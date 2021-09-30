@@ -1,45 +1,20 @@
-// import React from 'react';
-// import { Text, View } from 'react-native';
-
-// // const getWeatherData = (url) => {
-// //     return fetch(url)
-// // }
-
-// const getMoviesFromApiAsync = async () => {
-//     try {
-//       const response = await fetch(
-//         'https://reactnative.dev/movies.json'
-//       );
-//       const json = await response.json();
-//       return json.movies;
-//     } catch (error) {
-//       console.error(error);
-//     }
-//   };
-
-// export const WeatherBlock = (props) => {
-//     const city = props.city
-//     const url = getWeatherURL(city)
-//     const data = getMoviesFromApiAsync()
-//     return (
-//         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-//         <Text>{data}</Text>
-//         </View>
-//     );
-    
-// }
-
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, FlatList, Text, View } from 'react-native';
 
 const key = "a2636b80c7c4083cd00d031520a39963"; //don't tell anyone
+const info_refs = {
+  "temp": ["main", "temp"],
+  "wet": ["main", "humidity"],
+  "cloud": ["weather", 0, "description"] //poopy
+};
 
 export const WeatherBlock = (props) => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const url = getWeatherURL(props.city)
+  const block_info = info_refs[props.info]
 
-  const getMovies = async () => {
+  const getWeatherInfo = async () => {
       try {
 				const response = await fetch(url);
       	console.log("BENGA VOADORA")
@@ -53,13 +28,13 @@ export const WeatherBlock = (props) => {
   }
 
   useEffect(() => {
-    getMovies();
-  }, []);
+    getWeatherInfo();
+  }, []); 
 
   return (
     <View style={{ flex: 1, padding: 24 }}>
       {isLoading ? <ActivityIndicator/> : (
-        <Text>{JSON.stringify(data['main']['temp'])}</Text>
+        <Text>{JSON.stringify(data[block_info[0]][block_info[1]])}</Text>
       )}
     </View>
   );

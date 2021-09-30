@@ -13,7 +13,7 @@ function HomeScreen({ navigation }) {
     <View style={page.container}>
       {customIcon("home-outline")}
       <Text style={page.text}>Home Screen</Text>
-      <WeatherBlock city="Santos"></WeatherBlock>
+      <Text style={page.text}>Seja vem binda, Lucrezia</Text>
     </View>
   );
 }
@@ -23,6 +23,7 @@ function TemperatureScreen({ navigation }) {
     <View style={page.container}>
       {customIcon("thermometer-outline")}
       <Text style={page.text}>Temperature Screen</Text>
+      <WeatherBlock city="São Paulo" info="temp"></WeatherBlock>
     </View>
   );
 }
@@ -32,6 +33,7 @@ function HumidityScreen({ navigation }) {
     <View style={page.container}>
       {customIcon("beer-outline")}
       <Text style={page.text}>Humildade Screen</Text>
+      <WeatherBlock city="São Paulo" info="wet"></WeatherBlock>
     </View>
   );
 }
@@ -41,6 +43,7 @@ function CloudScreen({ navigation }) {
     <View style={page.container}>
       {customIcon("thunderstorm-outline")}
       <Text style={page.text}>Cloud Screen</Text>
+      <WeatherBlock city="São Paulo" info="cloud"></WeatherBlock>
     </View>
   );
 }
