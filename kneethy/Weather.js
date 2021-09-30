@@ -34,7 +34,9 @@ export const WeatherBlock = (props) => {
   return (
     <View style={{ flex: 1, padding: 24 }}>
       {isLoading ? <ActivityIndicator/> : (
-        <Text>{JSON.stringify(data[block_info[0]][block_info[1]])}</Text>
+        <Text>{Array.isArray(data[block_info[0]])
+          ? JSON.stringify(data[block_info[0]][block_info[1]][block_info[2]])
+          : JSON.stringify(data[block_info[0]][block_info[1]])}</Text>
       )}
     </View>
   );
