@@ -7,6 +7,7 @@ import { createDrawerNavigator, DrawerItem } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { DrawerLayout } from 'react-native-gesture-handler';
 import { WeatherBlock } from './Weather';
+import SocialButton from './SocialButton';
 
 function HomeScreen({ navigation }) {
   return (
@@ -14,6 +15,13 @@ function HomeScreen({ navigation }) {
       {customIcon("home-outline")}
       <Text style={page.text}>Home Screen</Text>
       <Text style={page.text}>Seja vem binda, Lucrezia</Text>
+      <SocialButton 
+        buttonTitle="Sign In with Google"
+        btnType="google"
+        color="#343745"
+        backgroundColor="#E4E9FF"
+        onPress={() => {}}
+      />
     </View>
   );
 }
