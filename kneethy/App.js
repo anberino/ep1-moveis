@@ -6,8 +6,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator, DrawerItem } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { DrawerLayout } from 'react-native-gesture-handler';
-import { WeatherBlock } from './Weather';
+import { weather } from './Weather';
 import SocialButton from './SocialButton';
+import { floor } from 'react-native-reanimated';
 
 function HomeScreen({ navigation }) {
   return (
@@ -27,11 +28,12 @@ function HomeScreen({ navigation }) {
 }
 
 function TemperatureScreen({ navigation }) {
+  const temperature = Math.floor((weather("São Paulo", "temp")-273.15)/10)*10
   return (
     <View style={page.container}>
-      {customIcon("thermometer-outline")}
-      <Text style={page.text}>Temperature Screen</Text>
-      <WeatherBlock city="São Paulo" info="temp"></WeatherBlock>
+      {/* {customIcon("thermometer-outline")} */}
+      <Text style={page.iconText}>{temperature}°C</Text>
+      <Text style={page.secondaryText}>Temperature</Text>
     </View>
   );
 }
@@ -39,9 +41,9 @@ function TemperatureScreen({ navigation }) {
 function HumidityScreen({ navigation }) {
   return (
     <View style={page.container}>
-      {customIcon("beer-outline")}
-      <Text style={page.text}>Humildade Screen</Text>
-      <WeatherBlock city="São Paulo" info="wet"></WeatherBlock>
+      {/* {customIcon("beer-outline")} */}
+      <Text style={page.iconText}>{weather("São Paulo", "wet")}%</Text>
+      <Text style={page.secondaryText}>Humildade</Text>
     </View>
   );
 }
@@ -49,9 +51,9 @@ function HumidityScreen({ navigation }) {
 function CloudScreen({ navigation }) {
   return (
     <View style={page.container}>
-      {customIcon("thunderstorm-outline")}
-      <Text style={page.text}>Cloud Screen</Text>
-      <WeatherBlock city="São Paulo" info="cloud"></WeatherBlock>
+      {/* {customIcon("thunderstorm-outline")} */}
+      <Text style={page.iconText}>{weather("São Paulo", "cloud")}%</Text>
+      <Text style={page.secondaryText}>Clouds</Text>
     </View>
   );
 }
@@ -60,7 +62,7 @@ function JournalScreen({ navigation }) {
   return (
     <View style={page.container}>
       {customIcon("book-outline")}
-      <Text style={page.text}>Diario Screen</Text>
+      <Text style={page.secondaryText}>Diario Screen</Text>
     </View>
   );
 }
@@ -113,8 +115,17 @@ const page = StyleSheet.create({
     backgroundColor: '#222531'
   },
   text: {
-    color: '#fff'
+    color: '#fff',
+    fontSize: 20
   },
+  secondaryText: {
+    color: '#5B5F72',
+    fontSize: 20
+  },
+  iconText: {
+    color: '#fff',
+    fontSize: 64
+  }
 });
 
 export default App;

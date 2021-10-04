@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, FlatList, Text, View } from 'react-native';
+import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 
 const key = "a2636b80c7c4083cd00d031520a39963"; //don't tell anyone
 const info_refs = {
   "temp": ["main", "temp"],
   "wet": ["main", "humidity"],
-  "cloud": ["weather", 0, "description"] //poopy
+  "cloud": ["clouds", "all"] //poopy
 };
 
-export const WeatherBlock = (props) => {
+export function weather(city, info) {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
-  const url = getWeatherURL(props.city)
-  const block_info = info_refs[props.info]
+  const url = getWeatherURL(city)
+  const block_info = info_refs[info]
 
   const getWeatherInfo = async () => {
       try {
@@ -31,15 +31,10 @@ export const WeatherBlock = (props) => {
     getWeatherInfo();
   }, []); 
 
-  return (
-    <View style={{ flex: 1, padding: 24 }}>
-      {isLoading ? <ActivityIndicator/> : (
-        <Text>{Array.isArray(data[block_info[0]])
-          ? JSON.stringify(data[block_info[0]][block_info[1]][block_info[2]])
-          : JSON.stringify(data[block_info[0]][block_info[1]])}</Text>
-      )}
-    </View>
-  );
+  if (isLoading){
+    return <ActivityIndicator/>
+  }
+  return JSON.stringify(data[block_info[0]][block_info[1]])
 };
 
 const getWeatherURL = (city) => {
