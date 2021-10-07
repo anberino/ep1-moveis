@@ -15,11 +15,11 @@ export function LoginBlock() {
 
   const logoutGoogle = (logout) => {
     console.log(logout);
-    if (logout.error == null) {
+    if (logout == null) {
       setLogged(false)
     }
   }
-  
+
   if (!logged) {
     return <GoogleLogin
     clientId="124292557093-bm13qb1e0elsj3v5aio9c0c773ecplsr.apps.googleusercontent.com"
