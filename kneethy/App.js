@@ -9,6 +9,7 @@ import { DrawerLayout } from 'react-native-gesture-handler';
 import { weather } from './Weather';
 import SocialButton from './SocialButton';
 import { floor } from 'react-native-reanimated';
+import { listJournal, save } from './Journal'
 
 function HomeScreen({ navigation }) {
   return (
@@ -63,6 +64,7 @@ function JournalScreen({ navigation }) {
     <View style={page.container}>
       {customIcon("book-outline")}
       <Text style={page.secondaryText}>Diario Screen</Text>
+      {listJournal()}
     </View>
   );
 }
@@ -80,7 +82,7 @@ const Drawer = createDrawerNavigator();
 function App() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Home"
+      <Drawer.Navigator initialRouteName="Journal"
             screenOptions={{
               headerStyle: {
                 backgroundColor: '#222531',
@@ -112,7 +114,7 @@ const page = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: '#222531'
+    backgroundColor: '#222531',
   },
   text: {
     color: '#fff',
@@ -125,7 +127,7 @@ const page = StyleSheet.create({
   iconText: {
     color: '#fff',
     fontSize: 64
-  }
+  },
 });
 
 export default App;
