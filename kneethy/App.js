@@ -9,6 +9,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { DrawerLayout } from 'react-native-gesture-handler';
 import { weather } from './Weather';
 import { floor } from 'react-native-reanimated';
+import { listJournal, save } from './Journal'
 import { LoginBlock } from './GoogleInOut';
 
 global.logged = false;
@@ -72,6 +73,7 @@ function JournalScreen({ navigation }) {
     <View style={page.container}>
       {customIcon("book-outline")}
       <Text style={page.secondaryText}>Diario Screen</Text>
+      {listJournal()}
     </View>
   );
 }
@@ -121,7 +123,7 @@ const page = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: '#222531'
+    backgroundColor: '#222531',
   },
   text: {
     color: '#fff',
@@ -134,7 +136,7 @@ const page = StyleSheet.create({
   iconText: {
     color: '#fff',
     fontSize: 64
-  }
+  },
 });
 
 export default App;

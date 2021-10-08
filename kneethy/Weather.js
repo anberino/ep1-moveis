@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const key = "a2636b80c7c4083cd00d031520a39963"; //don't tell anyone
 const info_refs = {
