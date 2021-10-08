@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { SafeAreaView, View, FlatList, StyleSheet, Text, ActivityIndicator, Button } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { TextInput } from 'react-native-gesture-handler';
+import { weather } from './Weather';
 
 const Item = ({ title, temperature }) => (
     <View style={page.container}>
@@ -10,8 +11,8 @@ const Item = ({ title, temperature }) => (
     </View>
 );
 
-function addData(data, entry) {
-    var temp = {"id": 0, "text": entry, "temperature":24}
+function addData(data, entry, temperature) {
+    var temp = {"id": 0, "text": entry, "temperature":temperature}
     var tData = JSON.stringify(data)
     tData = JSON.parse(data)
     temp["id"] = tData.length
@@ -20,6 +21,7 @@ function addData(data, entry) {
 }
 
 export function listJournal() {
+    var temperature = Math.floor((weather("São Paulo", "temp")-273.15)/10)*10
     const [text, onChangeText] = React.useState("");
     const [data, setData] = useState();
 
@@ -59,7 +61,7 @@ export function listJournal() {
         <SafeAreaView style={page.list}>
             <View style={page.in}>
                 <TextInput multiline style={page.textin} onChangeText={onChangeText} value={text} />
-                <Button style={page.butt} onPress={() => save("macaco", addData(data, text))} title="add" />
+                <Button style={page.butt} onPress={() => save("macaco", addData(data, text, temperature))} title="add" />
             </View>
             <FlatList 
             data={JSON.parse(data)}
