@@ -1,5 +1,7 @@
 # ep1-moveis
-Primeiro EP da disciplina de computação móvel
+## Primeiro EP da disciplina de computação móvel
+
+Gabriel Sarti (@anberino) e Victor Batistella (@vbatistella)
 
 Aplicativo de diário com informações climáticas. Modelo, layout e paleta inspirados em https://dribbble.com/shots/9388176-Unix-Dark-Mode
 
