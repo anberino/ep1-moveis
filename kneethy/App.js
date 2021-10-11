@@ -53,7 +53,7 @@ function HumidityScreen({ navigation }) {
     <View style={page.container}>
       {/* {customIcon("beer-outline")} */}
       <Text style={page.iconText}>{weather("São Paulo", "wet")}%</Text>
-      <Text style={page.secondaryText}>Humildade</Text>
+      <Text style={page.secondaryText}>Humidade</Text>
     </View>
   );
 }
@@ -63,7 +63,7 @@ function CloudScreen({ navigation }) {
     <View style={page.container}>
       {/* {customIcon("thunderstorm-outline")} */}
       <Text style={page.iconText}>{weather("São Paulo", "cloud")}%</Text>
-      <Text style={page.secondaryText}>Clouds</Text>
+      <Text style={page.secondaryText}>Cobertura de nuvens</Text>
     </View>
   );
 }
@@ -72,7 +72,7 @@ function JournalScreen({ navigation }) {
   return (
     <View style={page.container}>
       {customIcon("book-outline")}
-      <Text style={page.secondaryText}>Diario Screen</Text>
+      <Text style={page.secondaryText}>Diário</Text>
       {listJournal()}
     </View>
   );
